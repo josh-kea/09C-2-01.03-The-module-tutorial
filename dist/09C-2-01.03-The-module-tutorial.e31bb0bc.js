@@ -853,10 +853,25 @@ var _canvasCircularCountdown = _interopRequireDefault(require("canvas-circular-c
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log(_canvasCircularCountdown.default);
 var canvas = document.getElementById('countdown-canvas');
-console.log(canvas);
-new _canvasCircularCountdown.default(canvas);
+var form = document.querySelector('form');
+var countdown = new _canvasCircularCountdown.default(canvas, {
+  duration: 30 * 100,
+  showCaption: true
+}, function (percentage, time, instance) {
+  if (time.elapsed >= 5000) {
+    instance.stop();
+  }
+});
+form.addEventListener('submit', function (e) {
+  var finalDate = new Date(form.elements.date.value);
+  console.log(Date.now());
+  console.log(finalDate);
+  e.preventDefault();
+  countdown.duration = Date.now();
+  countdown.start();
+}); //console.log(CanvasCircularCountdown)
+//onsole.log(startBtn)
 },{"canvas-circular-countdown":"node_modules/canvas-circular-countdown/dist/CanvasCircularCountdown.js"}],"../../../../Users/Joshua/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -885,7 +900,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52187" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56880" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
