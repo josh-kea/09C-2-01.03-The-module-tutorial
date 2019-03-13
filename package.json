@@ -1,0 +1,20 @@
+{
+  "name": "09C-2-01.03-The-module-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josh-kea/09C-2-01.03-The-module-tutorial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josh-kea/09C-2-01.03-The-module-tutorial/issues"
+  },
+  "homepage": "https://github.com/josh-kea/09C-2-01.03-The-module-tutorial#readme"
+}
