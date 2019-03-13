@@ -856,7 +856,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var canvas = document.getElementById('countdown-canvas');
 var form = document.querySelector('form');
 var countdown = new _canvasCircularCountdown.default(canvas, {
-  duration: 30 * 100,
+  duration: 0,
   showCaption: true
 }, function (percentage, time, instance) {
   if (time.elapsed >= 5000) {
@@ -864,11 +864,17 @@ var countdown = new _canvasCircularCountdown.default(canvas, {
   }
 });
 form.addEventListener('submit', function (e) {
-  var finalDate = new Date(form.elements.date.value);
-  console.log(Date.now());
-  console.log(finalDate);
+  var todayDate = new Date(); //console.log(todayDate)
+
+  var finalDate = new Date(form.elements.date.value); //Getting date difference
+
+  var dateDifference = Math.abs(finalDate - todayDate) / 1000;
+  var secondsDifference = dateDifference % 60;
+  var milliSecondsDifference = secondsDifference * 1000; //console.log(finalDate)
+
+  countdown.options.duration = milliSecondsDifference; //console.log(countdown.options.duration)
+
   e.preventDefault();
-  countdown.duration = Date.now();
   countdown.start();
 }); //console.log(CanvasCircularCountdown)
 //onsole.log(startBtn)
@@ -900,7 +906,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56880" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59203" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
