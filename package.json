@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/josh-kea/09C-2-01.03-The-module-tutorial/issues"
   },
-  "homepage": "https://github.com/josh-kea/09C-2-01.03-The-module-tutorial#readme"
+  "homepage": "https://github.com/josh-kea/09C-2-01.03-The-module-tutorial#readme",
+  "dependencies": {
+    "canvas-circular-countdown": "^1.1.1"
+  }
 }
