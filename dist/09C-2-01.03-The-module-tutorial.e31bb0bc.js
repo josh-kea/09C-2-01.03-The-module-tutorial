@@ -853,17 +853,37 @@ var _canvasCircularCountdown = _interopRequireDefault(require("canvas-circular-c
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+window.addEventListener('DOMContentLoaded', init);
 var canvas = document.getElementById('countdown-canvas');
+var startBtn = document.querySelector('#start-btn');
 var form = document.querySelector('form');
-var countdown = new _canvasCircularCountdown.default(canvas, {
-  duration: 0,
-  showCaption: true
-}, function (percentage, time, instance) {
-  if (time.elapsed >= 5000) {
-    instance.stop();
-  }
-});
-form.addEventListener('submit', function (e) {
+var countdown;
+
+function init() {
+  countdown = new _canvasCircularCountdown.default(canvas, {
+    duration: 0
+  }); //
+
+  console.log(countdown);
+}
+
+;
+/* 
+function init(){
+  countdown = new CanvasCircularCountdown(canvas, {
+    duration: 15058.00000000454,
+    showCaption: true
+    
+    };, (percentage, time, instance) => {
+        if (time.elapsed >= 5000 ) {
+          instance.stop();
+        }
+      });
+};
+
+*/
+
+form.addEventListener('submit', function () {
   var todayDate = new Date(); //console.log(todayDate)
 
   var finalDate = new Date(form.elements.date.value); //Getting date difference
@@ -872,12 +892,21 @@ form.addEventListener('submit', function (e) {
   var secondsDifference = dateDifference % 60;
   var milliSecondsDifference = secondsDifference * 1000; //console.log(finalDate)
 
-  countdown.options.duration = milliSecondsDifference; //console.log(countdown.options.duration)
+  setDate(milliSecondsDifference);
+  console.log(countdown);
+});
 
-  e.preventDefault();
-  countdown.start();
-}); //console.log(CanvasCircularCountdown)
+function setDate(milliseconds) {
+  countdown.options.duration = milliseconds;
+} //console.log(CanvasCircularCountdown)
 //onsole.log(startBtn)
+//countdown.start();
+
+
+startBtn.addEventListener('click', function () {
+  console.log(countdown);
+  countdown.start();
+});
 },{"canvas-circular-countdown":"node_modules/canvas-circular-countdown/dist/CanvasCircularCountdown.js"}],"../../../../Users/Joshua/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -906,7 +935,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59203" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60321" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
