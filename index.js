@@ -3,14 +3,15 @@ import CanvasCircularCountdown from "canvas-circular-countdown";
 window.addEventListener('DOMContentLoaded', init);
 
 const canvas = document.getElementById('countdown-canvas');
-const startBtn = document.querySelector('#start-btn');
 const form = document.querySelector('form');
 let countdown;
 
 
 function init(){
   countdown = new CanvasCircularCountdown(canvas, {
-    duration: 0,    
+    duration: 0,
+    
+
     });
     //
     console.log(countdown)
@@ -33,35 +34,63 @@ function init(){
 */
 
 
-form.addEventListener('submit', () => {
+form.addEventListener('submit', e => {
   let todayDate = new Date();
   //console.log(todayDate)
-  let finalDate = new Date(form.elements.date.value);
-  //Getting date difference
-  let dateDifference = Math.abs(finalDate - todayDate) / 1000;
-  let secondsDifference = dateDifference % 60;
-  let milliSecondsDifference = secondsDifference * 1000;
-  //console.log(finalDate)
+  //console.log(form.elements.date.value);
+  //console.log(form.elements.time.value);
+  //console.log(todayDate.getTime())
 
-  setDate(milliSecondsDifference);
-  console.log(countdown)
+  
+  let finalDate = new Date(form.elements.date.value + ' ' + form.elements.time.value);
+  //Getting date difference
+  let milliSecondsDifference = finalDate.getTime()-todayDate.getTime();
+  //console.log(finalDate)
+console.log(milliSecondsDifference);
+  //setDate(milliSecondsDifference);
+
+  createNewCanvas(milliSecondsDifference);
+  e.preventDefault();
 
 
 
 
 })
 
+/*
+
 function setDate ( milliseconds ) {
   countdown.options.duration = milliseconds
 }
+
+*/
+
+function createNewCanvas (milliseconds) {
+  countdown = new CanvasCircularCountdown(canvas, {
+    duration: milliseconds
+    });
+    countdown.start();
+}
+
+//countdown.start();
 
 //console.log(CanvasCircularCountdown)
 
 //onsole.log(startBtn)
 //countdown.start();
 
-startBtn.addEventListener('click', ()=>{
-  console.log(countdown)
-  countdown.start();
+/*
 
-})
+function createButton(){
+  console.log('button should be made')
+  let startBtn = document.createElement('BUTTON');
+    startBtn.addEventListener('click', ()=>{
+      console.log(countdown)
+      
+    
+    })
+
+    document.body.appendChild(startBtn);
+}
+
+*/
